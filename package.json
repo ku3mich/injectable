@@ -1,0 +1,29 @@
+{
+  "name": "@ku3mich/injectable",
+  "version": "0.0.1",
+  "description": "ioc warpper",
+  "main": "index.js",
+  "dependencies": {
+    "awilix": "^2.4.0"
+  },
+  "devDependencies": {
+    "@ku3mich/mocha-misc": "github:ku3mich/mocha-misc",
+    "mocha": "^3.4.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ku3mich/injectable.git"
+  },
+  "keywords": [
+    "ioc"
+  ],
+  "author": "Serhii Kuzmychov <ku3mich@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ku3mich/injectable/issues"
+  },
+  "homepage": "https://github.com/ku3mich/injectable#readme"
+}
