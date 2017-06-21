@@ -1,3 +1,9 @@
-const injectable = require('./lib/injectable.js');
+const injectable = require('./lib/injectable');
+const symbols = require('./lib/symbols');
+const container = require('./lib/container');
 
-module.exports = injectable;
+Object.assign(
+	module.exports,
+	injectable,
+	symbols,
+	container);

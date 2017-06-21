@@ -3,9 +3,9 @@ const c = require('./sample-classes.js');
 
 describe('testing test classes', function (){
 	before(() => {
-		const container = i.createContainer();
+		const container = new i.Container();
 
-		container.registerClass({
+		container.register({
 			A : c.A,
 			B : c.B,
 			Dep : c.Dep,
