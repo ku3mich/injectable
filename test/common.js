@@ -1,23 +1,26 @@
 const i = require('../index.js');
 const c = require('./sample-classes.js');
 
-describe('testing test classes', function (){
-	before(() => {
-		const container = new i.Container();
+function registerContainer(services){
+	let container = new i.Container();
+	container.register(services);
+	return container;
+}
 
-		container.register({
-			A : c.A,
-			B : c.B,
-			Dep : c.Dep,
-			C : c.C
-		});
+const sampleServices =
+		  {
+			  A : c.A,
+			  B : c.B,
+			  Dep : c.Dep,
+			  C : c.C
+		  };
 
-		this.a = container.resolve('A');
-	});
+Object.assign(module.exports,
+			  {
+				  registerContainer,
+				  sampleServices
+			  } ,
+			  c
+			 );
 
-	it("'a' resolved", () =>
-	   assert(this.a));
 
-	it("'a'.Dep set", () =>
-		assert(this.a.dep instanceof c.Dep, "a.dep defined")) ;
-});

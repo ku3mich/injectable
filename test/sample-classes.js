@@ -4,17 +4,17 @@ class Dep  {
 	constructor(opts){
 	}
 }
-Dep[i.Register] = i.registerTransientClass;
+Dep[i.Inject] = i.transientClass();
 
 class A extends i.Injectable{
 	constructor(opts){
 		super(opts);
 	}
 }
-A[i.Register] = i.registerTransientClass;
-A[i.Inject] = {
+
+A[i.Inject] = i.transientClass({
 	dep : 'Dep'
-};
+});
 
 class B extends A {
 	constructor(opts){
@@ -27,10 +27,9 @@ class C extends i.Injectable {
 	constructor(opts){
 	}
 }
-C[i.Register] = i.registerTransientClass;
-C[i.Inject] = {
+C[i.Inject] = i.transientClass({
 	dep2 : 'Dep'
-};
+});
 
 module.exports = {
 	Dep,

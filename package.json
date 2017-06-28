@@ -4,7 +4,8 @@
   "description": "ioc warpper",
   "main": "index.js",
   "dependencies": {
-    "awilix": "^2.4.0"
+    "awilix": "^2.4.0",
+    "glob": "^7.1.2"
   },
   "devDependencies": {
     "@ku3mich/mocha-misc": "github:ku3mich/mocha-misc",
