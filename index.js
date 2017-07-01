@@ -1,9 +1,11 @@
-const injectable = require('./lib/injectable');
-const symbols = require('./lib/symbols');
-const container = require('./lib/container');
-
 Object.assign(
 	module.exports,
-	injectable,
-	symbols,
-	container);
+	{
+		Injectable : require('./lib/injectable'),
+		Container : require('./lib/container'),
+		InjectError : require('./lib/injectError.js'),
+		Registration : require('./lib/registration.js')
+	},
+	require('./lib/symbols'),
+	require('./lib/registrators.js')
+);
