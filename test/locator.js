@@ -15,8 +15,12 @@ describe('locator', function () {
 	 assert(this.locator.resolve(this.file) instanceof Resolver));
 
   it("resolve absolute", () =>
-	 assert.equal(this.locator.resolve(this.file).result, __filename));
+	 assert.equal(
+       this.locator.resolve(this.file).result,
+       __filename));
 
   it("resolve relative", () =>
-	 assert.equal(this.locator.resolve(this.file).relative.result, this.file));
+	 assert.equal(
+       this.locator.resolve(this.file).relative.result,
+       this.file));
 });
