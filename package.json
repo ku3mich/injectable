@@ -4,13 +4,13 @@
   "description": "ioc warpper",
   "main": "index.js",
   "dependencies": {
-    "@ku3mich/base": "0.0.4",
+    "@ku3mich/base": "~0.0.4",
     "awilix": "^2.4.0",
     "glob": "^7.1.2",
     "pipe-functions": "^1.2.0"
   },
   "devDependencies": {
-    "@ku3mich/mocha-misc": "0.0.4",
+    "@ku3mich/mocha-misc": "~0.0.4",
     "mocha": "^3.4.2"
   },
   "scripts": {
