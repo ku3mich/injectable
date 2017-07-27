@@ -17,6 +17,6 @@ describe('locator', function () {
 
     files.should
       .containEql('sample/classes/dep.js')
-      .have.length(6);
+      .have.length(7);
   });
 });
