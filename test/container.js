@@ -2,7 +2,8 @@ const i = require('../index.js');
 const c = require('./sample/classes');
 
 function registerContainer(services){
-  let container = new i.Container();
+  const locator = new i.Locator(__dirname);
+  let container = new i.Container(locator);
   container.register(services);
   return container;
 }
@@ -28,7 +29,10 @@ describe('container resolve', function (){
 });
 
 describe('registration errors', function () {
-  const tryRegister = type =>  registerContainer({  [type.toString()] : type });
+  const tryRegister = type =>
+          registerContainer({
+            [type.toString()] : type
+          });
 
   it('throws if no Inject', () => {
 	class Q extends i.Injectable {
@@ -38,11 +42,27 @@ describe('registration errors', function () {
 				   tryRegister(Q));
   });
   
-  it('throws if Inject is not [Registration]', () => {
+  it('throws if Q.[Inject] is not [Registration]', () => {
 	class Q extends i.Injectable {
 	}
 	Q[i.Inject] = {};
 	
 	assert.throws( () =>  tryRegister(Q));
   });
+
+  it('throws if Q is not [Injectable]', () => {
+	class Q {
+	}
+	Q[i.Inject] = i.transientClass(module);
+	
+	assert.throws( () =>  tryRegister(Q));
+  });
+
+  it('throws if module not specified in registration', () => {
+	class Q {
+	}
+	
+	assert.throws(() => Q[i.Inject] = i.transientClass(/*module*/));
+  });
+  
 });

@@ -7,20 +7,16 @@ const path = require('path');
 
 describe('locator', function () {
   before(() => {
-	this.locator = new Locator(__dirname);
+    this.locator = new Locator(__dirname);
 	this.file = path.basename(__filename);
   });
 
-  it("resolve is resolver", () =>
-	 assert(this.locator.resolve(this.file) instanceof Resolver));
 
-  it("resolve absolute", () =>
-	 assert.equal(
-       this.locator.resolve(this.file).result,
-       __filename));
+  it("locate files", () => {
+    const files = this.locator.locateFiles('sample/**/*.js');
 
-  it("resolve relative", () =>
-	 assert.equal(
-       this.locator.resolve(this.file).relative.result,
-       this.file));
+    files.should
+      .containEql('sample/classes/dep.js')
+      .have.length(6);
+  });
 });

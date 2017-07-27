@@ -6,7 +6,7 @@ class A extends i.Injectable{
   }
 }
 
-A[i.Inject] = i.transientClass({
+A[i.Inject] = i.transientClass(module, {
   dep : 'Dep'
 });
 

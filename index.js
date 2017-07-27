@@ -6,7 +6,7 @@ Object.assign(
 	InjectError : require('./lib/injectError.js'),
 	Registration : require('./lib/registration.js'),
 	Locator : require('./lib/locator'),
-	Resolver : require('./lib/resolver')
+	Resolver : require('./lib/resolver'),
   },
   require('./lib/symbols'),
   require('./lib/registrators.js')
