@@ -1,6 +1,6 @@
 {
   "name": "@ku3mich/injectable",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "ioc warpper",
   "main": "index.js",
   "dependencies": {
