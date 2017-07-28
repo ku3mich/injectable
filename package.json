@@ -9,8 +9,7 @@
     "glob": "^7.1.2"
   },
   "devDependencies": {
-    "@ku3mich/mocha-misc": "~0.0.4",
-    "mocha": "^3.4.2"
+    "@ku3mich/test": "~0.0.4"
   },
   "scripts": {
     "test": "mocha"

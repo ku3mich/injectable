@@ -6,7 +6,8 @@ class C extends i.Injectable {
   }
 }
 C[i.Inject] = i.transientClass(module, {
-  dep2 : 'Dep'
+  dep2 : './dep',
+  d : './sub/d'
 });
 
 module.exports = C;

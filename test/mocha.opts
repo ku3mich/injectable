@@ -1,1 +1,1 @@
---require should --require @ku3mich/mocha-misc/assert --reporter @ku3mich/mocha-misc/spec
+--require @ku3mich/test/globals --reporter @ku3mich/test/spec

@@ -6,8 +6,8 @@ class D extends i.Injectable {
   }
 }
 
-D[i.Inject] = i.transientClass({
+D[i.Inject] = i.transientClass(module, {
   A : '../a'
-});
+}).tagged('me', 'z');
 
 module.exports = D;
