@@ -33,14 +33,6 @@ describe('registration errors', function () {
             [type.toString()] : type
           });
 
-  it('throws if no Inject', () => {
-	class Q extends i.Injectable {
-	}
-
-	assert.throws( () =>
-				   tryRegister(Q));
-  });
-  
   it('throws if Q.[Inject] is not [Registration]', () => {
 	class Q extends i.Injectable {
 	}
