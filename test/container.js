@@ -3,8 +3,9 @@ const c = require('./sample/classes');
 
 function registerContainer(services){
   const locator = new i.Locator(__dirname+'/sample/classes');
-  let container = new i.Container(locator);
+  const container = new i.Container(locator);
   container.register(services);
+
   return container;
 }
 
@@ -22,7 +23,7 @@ describe('container resolve', function (){
 	 assert(this.container.resolve('/a') instanceof c.A));
 
   it("A.Dep is set to instance of Dep", () => {
-	let a = this.container.resolve('/a');
+	const a = this.container.resolve('/a');
 	assert(a.dep instanceof c.Dep);
   });
 });
