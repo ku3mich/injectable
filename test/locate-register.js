@@ -3,7 +3,9 @@ const path = require('path');
 const Dep = require('./sample/classes/dep');
 const D = require('./sample/classes/sub/d');
 const A = require('./sample/classes/a');
-const B = require('./sample/classes/b.js');
+const B = require('./sample/classes/b');
+const s = require('./sample/symbols');
+const S = require('./sample/classes/s');
 
 function createContainer(){
   const locator = new i.Locator(path.join(__dirname, 'sample/classes'));
@@ -15,7 +17,8 @@ function createContainer(){
 describe('locate and register', function () {
   before( () => {
     this.container = createContainer();
-    this.container.on('registered', w => console.log(`    ${w.svc} as ${w.scope} tags: [${w.type[i.Inject].tags}]`));
+    this.container.on('registered', w => console.log(`    ${w.svc} as ${w.scope} tags: [${w.type[i.Inject].tags.map(q=>String(q))}]`));
+    this.container.on('warning', w => console.log(`    WARN: ${w}`));
     
     this.container.registerParts('**/*.js');
   });
@@ -46,4 +49,11 @@ describe('locate and register', function () {
     me.some(e=> e instanceof D).should.be.ok();
     me.some(e=> e instanceof A).should.be.ok();
   });
+
+  it('tagged Symbol(S)', () => {
+    const me = this.container.resolveMany(s.S);
+    me.should.have.length(1);
+    me.some(e=> e instanceof S).should.be.ok();
+  });
+
 });
