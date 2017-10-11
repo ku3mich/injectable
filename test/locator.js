@@ -1,7 +1,4 @@
-const {
-  Locator,
-  Resolver
-} = require('../index');
+const Locator = require('../index').Locator;
 
 const path = require('path');
 
