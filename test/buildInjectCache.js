@@ -3,20 +3,20 @@ const buildInjectCache = require('../lib/buildInjectCache');
 const Q = require('./sample/classes/fake/q');
 
 describe('build inject cache', function () {
+  before( () =>{
+    this.locator = new i.Locator(__dirname);
+  });
+  
   it('instance',  () => {
-    const locator = new i.Locator(__dirname);
-
     const q = new Q();
     
-    const cache = buildInjectCache(q, locator);
+    const cache = buildInjectCache(q, this.locator);
+    console.log(cache, cache.props.have);
     cache.props.should.have.property('dep', '/sample/classes/dep');
-    console.log(cache);
   });
 
   it('type',  () => {
-    const locator = new i.Locator(__dirname);
-
-    const cache = buildInjectCache(Q, locator);
-    console.log(cache);
+    const cache = buildInjectCache(Q, this.locator);
+    cache.props.should.have.property('dep', '/sample/classes/dep');
   });
 });
