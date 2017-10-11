@@ -23,7 +23,7 @@ describe('part', function () {
       .should.have.property('Dep');
 
     part.services
-      .should.containEql('Dep');
+      .should.contain('Dep');
   });
   
   it('2nd load throws', () =>

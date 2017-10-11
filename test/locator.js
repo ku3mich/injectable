@@ -13,7 +13,7 @@ describe('locator', function () {
     const files = this.locator.locateFiles('sample/**/*.js');
 
     files.should
-      .containEql('sample/classes/dep.js')
+      .contain('sample/classes/dep.js')
       .property('length').greaterThan(1);
   });
 });

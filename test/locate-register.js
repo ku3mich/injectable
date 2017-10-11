@@ -39,21 +39,21 @@ describe('locate and register', function () {
   it('tagged z', () => {
     const z = this.container.resolveMany('z');
     z.should.have.length(1);
-    z.some(e => e instanceof D).should.be.ok();
+    z.filter(e => e instanceof D).should.be.not.empty;
   });
 
   it('tagged me', () => {
     const me = this.container.resolveMany('me');
     me.should.have.length(3);
-    me.some(e=> e instanceof B).should.be.ok();
-    me.some(e=> e instanceof D).should.be.ok();
-    me.some(e=> e instanceof A).should.be.ok();
+    me.filter(e => e instanceof B).should.be.not.empty;
+    me.filter(e=> e instanceof D).should.be.not.empty;
+    me.filter(e=> e instanceof A).should.be.not.empty;
   });
 
   it('tagged Symbol(S)', () => {
     const me = this.container.resolveMany(s.S);
     me.should.have.length(1);
-    me.some(e=> e instanceof S).should.be.ok();
+    me.filter(e => e instanceof S).should.be.not.empty;
   });
 
 });

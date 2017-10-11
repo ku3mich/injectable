@@ -11,7 +11,6 @@ describe('build inject cache', function () {
     const q = new Q();
     
     const cache = buildInjectCache(q, this.locator);
-    console.log(cache, cache.props.have);
     cache.props.should.have.property('dep', '/sample/classes/dep');
   });
 
