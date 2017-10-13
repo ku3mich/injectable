@@ -5,11 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "@ku3mich/base": "0.0.14",
-    "awilix": "^2.8.1",
+    "awilix": "^2.8.2",
     "glob": "^7.1.2"
   },
   "devDependencies": {
-    "@ku3mich/test": "0.0.7"
+    "@ku3mich/test": "=>0.0.7"
   },
   "scripts": {
     "test": "mocha"
