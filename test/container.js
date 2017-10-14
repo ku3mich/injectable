@@ -1,9 +1,11 @@
 const i = require('../index.js');
 const c = require('./sample/classes');
+const path = require('path');
 
 function registerContainer(services){
-  const locator = new i.Locator(__dirname+'/sample/classes');
+  const locator = new i.Locator(path.join(__dirname, '/sample/classes'));
   const container = new i.Container(locator);
+  container.on(i.events.warning, (...args) => console.log(args));
   container.register(services);
 
   return container;
@@ -19,12 +21,14 @@ describe('container resolve', function (){
   before(() =>
 		 this.container = registerContainer(sampleServices));
 
-  it("'/a' resolves to [A]", () =>
-	 assert(this.container.resolve('/a') instanceof c.A));
+  it("'/a' resolves to [A]", () => {
+    const result = this.container.resolve('/a');
+    expect(result).to.be.instanceOf(c.A);
+  });
 
   it("A.Dep is set to instance of Dep", () => {
 	const a = this.container.resolve('/a');
-	assert(a.dep instanceof c.Dep);
+    expect(a.dep).to.be.instanceOf(c.Dep);
   });
 });
 

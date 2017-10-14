@@ -17,13 +17,13 @@ function createContainer(){
 describe('locate and register', function () {
   before( () => {
     this.container = createContainer();
-    this.container.on('registered', w => console.log(`    ${w.svc} as ${w.scope} tags: [${w.type[i.Inject].tags.map(q=>String(q))}]`));
-    this.container.on('warning', w => console.log(`    WARN: ${w}`));
+    this.container.on(i.events.registered, w => console.log(`    ${w.svc} as ${w.scope} tags: [${w.type[i.Inject].tags.map(q=>String(q))}]`));
+    this.container.on(i.events.warning, w => console.log(`    WARN: ${w}`));
     
     this.container.registerParts('**/*.js');
   });
 
-  it('complicated', () =>{
+  it('complicated', () => {
     const c = this.container.resolve('/c');
 
     c.dep2.should.instanceof(Dep);
