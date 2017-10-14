@@ -12,7 +12,7 @@ function createContainer(){
   const container = new i.Container(locator);
   
   container.on(i.events.registered, (w) => {
-    const tags = w.type[i.symbols.Exposure].tags.map(q => String(q));
+    const tags = w.type[i.symbols.exposure].tags.map(q => String(q));
     console.log(`    ${w.svc} as ${w.scope} tags: [${tags}]`);
   });
   container.on(i.events.warning, w => console.log(`    WARN: ${w}`));

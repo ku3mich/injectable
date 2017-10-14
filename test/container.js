@@ -42,7 +42,7 @@ describe('registration errors', function () {
   it('throws if Q.[Inject] is not [Registration]', () => {
 	class Q extends i.Injectable {
 	}
-	Q[i.symbols.Exposure] = {};
+	Q[i.symbols.exposure] = {};
 	
 	assert.throws( () =>  tryRegister(Q));
   });
@@ -54,12 +54,4 @@ describe('registration errors', function () {
 	
 	assert.throws( () =>  tryRegister(Q));
   });
-
-  it('throws if module not specified in registration', () => {
-	class Q {
-	}
-	
-	assert.throws(() => Q[i.Inject] = i.transientClass(/*module*/));
-  });
-  
 });
