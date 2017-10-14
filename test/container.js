@@ -22,6 +22,7 @@ describe('container resolve', function (){
 		 this.container = registerContainer(sampleServices));
 
   it("'/a' resolves to [A]", () => {
+    
     const result = this.container.resolve('/a');
     expect(result).to.be.instanceOf(c.A);
   });
@@ -41,7 +42,7 @@ describe('registration errors', function () {
   it('throws if Q.[Inject] is not [Registration]', () => {
 	class Q extends i.Injectable {
 	}
-	Q[i.Inject] = {};
+	Q[i.symbols.Exposure] = {};
 	
 	assert.throws( () =>  tryRegister(Q));
   });
@@ -49,7 +50,7 @@ describe('registration errors', function () {
   it('throws if Q is not [Injectable]', () => {
 	class Q {
 	}
-	Q[i.Inject] = i.transientClass(module);
+	module.expose(Q).transientClass(module);
 	
 	assert.throws( () =>  tryRegister(Q));
   });

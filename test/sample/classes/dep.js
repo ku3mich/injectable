@@ -5,6 +5,6 @@ class Dep extends i.Injectable  {
     super(opts);
   }
 }
-Dep[i.Inject] = i.transientClass(module);
 
-module.exports = Dep;
+module.expose(Dep)
+  .transientClass();

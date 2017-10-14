@@ -10,18 +10,20 @@ const S = require('./sample/classes/s');
 function createContainer(){
   const locator = new i.Locator(path.join(__dirname, 'sample/classes'));
   const container = new i.Container(locator);
+  
+  container.on(i.events.registered, (w) => {
+    const tags = w.type[i.symbols.Exposure].tags.map(q => String(q));
+    console.log(`    ${w.svc} as ${w.scope} tags: [${tags}]`);
+  });
+  container.on(i.events.warning, w => console.log(`    WARN: ${w}`));
+  container.registerParts('**/*.js');
 
   return container;
 }
 
 describe('locate and register', function () {
-  before( () => {
-    this.container = createContainer();
-    this.container.on(i.events.registered, w => console.log(`    ${w.svc} as ${w.scope} tags: [${w.type[i.Inject].tags.map(q=>String(q))}]`));
-    this.container.on(i.events.warning, w => console.log(`    WARN: ${w}`));
-    
-    this.container.registerParts('**/*.js');
-  });
+  before( () =>
+          this.container = createContainer());
 
   it('complicated', () => {
     const c = this.container.resolve('/c');

@@ -7,5 +7,7 @@ class S extends i.Injectable {
   }
 }
 
-S[i.Inject] = i.transientClass(module).tagged(s.S);
-module.exports = S;
+module.expose(S)
+  .transientClass()
+  .tagged(s.S);
+

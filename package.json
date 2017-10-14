@@ -4,7 +4,7 @@
   "description": "ioc warpper",
   "main": "index.js",
   "dependencies": {
-    "@ku3mich/base": "0.0.14",
+    "@ku3mich/base": "0.0.16",
     "awilix": "^2.8.2",
     "glob": "^7.1.2"
   },

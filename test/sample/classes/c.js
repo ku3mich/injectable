@@ -5,9 +5,9 @@ class C extends i.Injectable {
     super(opts);
   }
 }
-C[i.Inject] = i.transientClass(module, {
-  dep2 : './dep',
-  d : './sub/d'
-});
 
-module.exports = C;
+module.expose(C)
+  .transientClass({
+    dep2 : './dep',
+    d : './sub/d'
+  });
